@@ -1,4 +1,4 @@
-# Aelius API Tutorial & Documentation
+# Aelius API
 
 ## Introduction
 Welcome to the Aelius API tutorial. This guide will help you integrate the free and open Aelius chatbot into your website.
