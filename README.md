@@ -43,3 +43,63 @@ async function sendMessage() {
     }
 }
 ```
+
+## Displaying the Response
+Once you receive a response from the API, display it in the chat container. Ensure you handle any errors or exceptions that might occur.
+
+### JavaScript
+```javascript
+function displayMessage(who, message) {
+    const messageDiv = document.createElement('p');
+    if (who === 'You') {
+        messageDiv.classList.add('user');
+    }
+    messageDiv.innerHTML = `<strong>${who}:</strong> ${message}`;
+    chatBox.appendChild(messageDiv);
+}
+          
+```
+
+## Example
+A simple API usage example written in Python. More examples can be found in this repository.
+
+### Python
+```python
+import requests
+
+def send_message_to_aelius(user_input):
+    url = 'https://aelius.live/api/v1/chat'
+    headers = {'Content-Type': 'application/json'}
+    data = {'user_input': user_input}
+    
+    try:
+        response = requests.post(url, headers=headers, json=data)
+        return response.json()['response']
+    except Exception as e:
+        print(f"Error fetching AI response: {e}")
+        return None
+
+def main():
+    print("Welcome to the Aelius Command-Line Chatbot!")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ['exit', 'quit']:
+            print("Exiting chatbot. Goodbye!")
+            break
+        response = send_message_to_aelius(user_input)
+        if response:
+            print(f"Assistant: {response}")
+
+main()
+```
+
+## API Guidelines
+Avoid straining the API, we don't have unlimited computing power and if you wish for Aelius to remain free and open then please use the API within reason.
+
+## Enhancements & Best Practices
+You can enhance the chatbot by adding features like predefined prompts, error handling, and more. Here are some best practices to consider:
+
+* Always handle API errors gracefully.
+* Consider adding a loading animation while waiting for the API response.
+* Regularly test the chatbot to ensure it's functioning correctly.
+* Avoid straining the API.
